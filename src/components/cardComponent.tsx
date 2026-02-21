@@ -16,21 +16,20 @@ export const CardComponent = (props: CardComponentType) => {
     const dispatch = useDispatch()
     const navigate = useNavigate();
 
-    //[В ПРОЦЕССЕ] Делаем переход на страницу книги из поиска
+    //Делаем переход на страницу книги из поиска
     const bookPageIDLink = () => {
         axios.get(`https://www.googleapis.com/books/v1/volumes/${props.book.id}`)
             .then(data => data.data)
             .then(data => dispatch(formABookSearchPage(
                 {
                     id: data.id,
+                    publisher: data.volumeInfo.publisher,
                     title: data.volumeInfo.title,
-                    thumbnail: data.volumeInfo.imageLinks.thumbnail,
+                    thumbnail: data.volumeInfo.imageLinks?.thumbnail || 'https://avatars.mds.yandex.net/i?id=5eeabc5f3711448db0945d8ecf0c5905_l-9181740-images-thumbs&n=13',
                     discription: data.volumeInfo.description
                 }
             )))
-            .then(data => navigate('/booksearch'))
-
-
+            .then(() => navigate('/booksearch'))
     }
     //-------------------------------------------------------
 

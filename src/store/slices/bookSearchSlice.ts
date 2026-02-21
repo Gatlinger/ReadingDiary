@@ -13,14 +13,12 @@ export const BookSearchSlice = createSlice({
     name: 'BookSearchSlice',
     initialState,
     reducers: {
-        addBook: (state, action) => [
-            ...state, action.payload
-        ],
-        makeNewList: (state, action) => [...action.payload]
+        makeNewList: (state, action) => [...action.payload],
+        makeNewListBySearch: (state, action) => [...action.payload]
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { addBook,makeNewList } = BookSearchSlice.actions
+export const { makeNewList } = BookSearchSlice.actions
 
 export default BookSearchSlice.reducer

@@ -10,6 +10,8 @@ export const BookSearchPage = () => {
             {booksearchpage.title}
             <img src={booksearchpage.thumbnail} alt="111" />
             {booksearchpage.discription}
+            <div>{booksearchpage.publisher}</div>
+            <div>{booksearchpage.id}</div>
         </div>
     )
 }
